@@ -1,0 +1,11 @@
+flask==3.0.0
+flask-cors==5.0.1
+pillow==10.2.0
+numpy==1.26.3
+tensorflow==2.15.0
+duckduckgo-search==4.1.1
+python-dotenv==1.0.1
+langchain-openai==0.0.5
+flask-bootstrap>=3.3.7.1
+crewai>=0.11.0
+langchain>=0.1.0 
