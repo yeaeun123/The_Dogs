@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -11,6 +11,14 @@ function App() {
   const [predictions, setPredictions] = useState([]);
   const [breedAnalysis, setBreedAnalysis] = useState(null);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    console.log('breedAnalysis updated:', breedAnalysis);
+  }, [breedAnalysis]);
+
+  useEffect(() => {
+    console.log('predictions updated:', predictions);
+  }, [predictions]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -38,6 +46,7 @@ function App() {
         },
       });
 
+      console.log('API Response:', response.data);
       setPredictions(response.data.predictions || []);
       setBreedAnalysis(response.data.breed_analysis || null);
     } catch (error) {
@@ -150,7 +159,7 @@ function App() {
                         <i className="fas fa-paw me-2"></i>견종 특징 및 관리 요구사항
                       </h5>
                       <div className="characteristics-content">
-                        {breedAnalysis.predictions || '정보 없음'}
+                        {JSON.stringify(predictions, null, 2)}
                       </div>
                     </div>
                     <div className="personality-section">
@@ -158,7 +167,7 @@ function App() {
                         <i className="fas fa-heart me-2"></i>성격 및 기질
                       </h5>
                       <div className="personality-content">
-                        {breedAnalysis.breed_analysis || '정보 없음'}
+                        {JSON.stringify(breedAnalysis, null, 2)}
                       </div>
                     </div>
                   </div>
