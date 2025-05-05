@@ -154,20 +154,12 @@ function App() {
                     <i className="fas fa-info-circle me-2"></i>품종 상세 분석
                   </h4>
                   <div className="analysis-content">
-                    <div className="characteristics-section mb-3">
-                      <h5 className="text-primary">
-                        <i className="fas fa-paw me-2"></i>견종 특징 및 관리 요구사항
-                      </h5>
-                      <div className="characteristics-content">
-                        {JSON.stringify(predictions, null, 2)}
-                      </div>
-                    </div>
                     <div className="personality-section">
                       <h5 className="text-primary">
                         <i className="fas fa-heart me-2"></i>성격 및 기질
                       </h5>
-                      <div className="personality-content">
-                        {JSON.stringify(breedAnalysis, null, 2)}
+                      <div className="personality-content" style={{ whiteSpace: 'pre-wrap' }}>
+                        {JSON.stringify(breedAnalysis).replace(/\\n/g, '\n')}
                       </div>
                     </div>
                   </div>
