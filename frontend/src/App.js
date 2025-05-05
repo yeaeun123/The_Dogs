@@ -40,7 +40,7 @@ function App() {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:5001/service', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/service`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
